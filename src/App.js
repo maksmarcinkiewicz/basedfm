@@ -1,25 +1,42 @@
-import logo from './logo.svg';
 import './App.css';
+import Header from "./components/Header"
+import TopAlbumsData from "./components/TopAlbumsData";
+import RecentTrackData from "./components/RecentTrackData";
+import UserData from "./components/UserData";
+import WeeklyAlbumChartData from "./components/WeeklyAlbumChartData";
+import TopTracksData from "./components/TopTracksData";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    return (
+        <div>
+            <Header/>
+            <UserData
+                userName={'maaxiu'}
+                apiKey={'8a4ea58597a9054a5ccf40bde6b454d3'}
+            />
+            <RecentTrackData
+                userName={'maaxiu'}
+                apiKey={'8a4ea58597a9054a5ccf40bde6b454d3'}
+            />
+            <WeeklyAlbumChartData
+                userName={'maaxiu'}
+                apiKey={'8a4ea58597a9054a5ccf40bde6b454d3'}
+            />
+            <TopTracksData
+                userName={'maaxiu'}
+                apiKey={'8a4ea58597a9054a5ccf40bde6b454d3'}
+            />
+            <TopAlbumsData
+                userName={'maaxiu'}
+                apiKey={'8a4ea58597a9054a5ccf40bde6b454d3'}
+            />
+
+
+
+
+        </div>
+    );
 }
 
 export default App;
