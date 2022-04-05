@@ -26,6 +26,14 @@ export const RecentTrackData = ({userName, apiKey}) => {
         const {error} = lfmData;
         const track = lfmData?.recenttracks?.track;
 
+
+        const recentTrack = {
+            songName: track?.[0]?.name,
+            artistName: track?.[0]?.artist?.['#text'],
+            albumName: track?.[0]?.album?.['#text'],
+            albumImg: track?.[0]?.image?.[2]?.['#text']
+        }
+
         if (error) {
             return <p>{error}</p>;
         }
@@ -34,13 +42,22 @@ export const RecentTrackData = ({userName, apiKey}) => {
             return <p>Loading</p>;
         }
 
-        const [
-            {name: songName, artist: { '#text': artistName } = {}} = {}
-        ] = track;
 
         return (
-            <div className=" display flex justify-center ">
-                <h3 className="text-center py-8 font-bold">Recent track: {songName} by {artistName}</h3>
+            <div className="display flex flex-col p-4 bg-[#ddbea9]">
+                <div className='display flex items-center justify-between'>
+                    <div>
+                        <h3 className='font-bold text-lg'>Song: {recentTrack.songName}</h3>
+
+                        <h3 className='font-medium text-lg'>Artist: {recentTrack.artistName}</h3>
+
+                        <h3 className='font-medium text-md'>Album: {recentTrack.albumName}</h3>
+                    </div>
+                    <div>
+                        <img className='rounded-full border-4 w-24' src={recentTrack.albumImg} alt=""/>
+                    </div>
+                </div>
+
             </div>
 
         );

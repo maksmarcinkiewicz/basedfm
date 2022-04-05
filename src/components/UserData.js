@@ -1,4 +1,5 @@
 import {useEffect, useState} from 'react';
+import { motion } from "framer-motion"
 
 export const UserData = ({userName, apiKey}) => {
 
@@ -16,7 +17,6 @@ export const UserData = ({userName, apiKey}) => {
             })
             .then(data => {
                 updateLfmData(data)
-                console.log(data)
             })
             .catch(() =>
                 updateLfmData({error: 'Whoops! Something went wrong with Last.fm'})
@@ -24,19 +24,43 @@ export const UserData = ({userName, apiKey}) => {
     }, []);
     const topAlbumData = () => {
         const {error} = lfmData;
-        const track = lfmData?.user;
+        const user = lfmData?.user;
+
+        let options = {year: 'numeric', month: 'long', day: 'numeric' };
+
+        const userInfo = {
+            userName: user?.name,
+            userImg: user?.image?.[2]?.['#text'],
+            playCount: user?.playcount,
+            registeredDate: new Date(user?.registered?.unixtime * 1000).toLocaleString('en-US', options)
+        }
+
+
+
+
+
 
         if (error) {
             return <p>{error}</p>;
         }
 
-        if (!track) {
+        if (!user) {
             return <p>Loading</p>;
         }
 
 
+        return (
+            <motion.div className="display flex justify-between p-4 bg-[#cb997e] items-center">
+                <div className="display flex flex-col">
+                    <h3 className='font-poppins text-xl font-bold'>User: {userInfo.userName}</h3>
+                    <h3 className='font-poppins text-lg font-bold'>Play count: {userInfo.playCount}</h3>
+                    <h3 className='font-poppins text-md font-regular'>From: {userInfo.registeredDate}</h3>
 
-        return <h3 className="text-center py-8 font-bold bg-slate-900	text-white">Username: {track.name} playcount: {track.playcount} </h3>
+                </div>
+                <img className='rounded-full border-4 w-32' src={userInfo.userImg} alt=""/>
+
+            </motion.div>
+        )
     };
 
     return topAlbumData()
