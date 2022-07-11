@@ -1,5 +1,4 @@
 import React from "react";
-import {slide as Menu} from 'react-burger-menu'
 import "./Header.css"
 
 class Header extends React.Component {
@@ -11,10 +10,10 @@ class Header extends React.Component {
     render() {
         // NOTE: You also need to provide styles, see https://github.com/negomi/react-burger-menu#styling
         return (
-            <div className="display flex justify-between">
-                <h1 className="text-2xl font-bold p-12 display flex justify-start">BASED-FM</h1>
+            <div className="display flex justify-between p-4">
+                <h1 className="text-2xl font-bold display flex">BASED-FM</h1>
 
-                <button className="items-center display flex pr-24">
+                <button className="items-center display flex">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24"
                          stroke="currentColor" strokeWidth={2}>
                         <path strokeLinecap="round" strokeLinejoin="round"

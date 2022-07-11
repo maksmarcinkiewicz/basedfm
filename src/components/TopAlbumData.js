@@ -3,7 +3,6 @@ import {useEffect, useState} from 'react';
 export const TopAlbumData = ({userName, apiKey}) => {
 
     const topAlbums = `http://ws.audioscrobbler.com/2.0/?method=user.gettopalbums&user=${userName}&api_key=${apiKey}&limit=1&format=json`
-    const recentTracks = `https://ws.audioscrobbler.com/2.0/?method=user.getRecentTracks&user=${userName}&api_key=${apiKey}&limit=1&nowplaying=true&format=json`
 
     const [lfmData, updateLfmData] = useState({});
     useEffect(() => {
@@ -22,7 +21,7 @@ export const TopAlbumData = ({userName, apiKey}) => {
             .catch(() =>
                 updateLfmData({error: 'Whoops! Something went wrong with Last.fm'})
             );
-    }, []);
+    }, [topAlbums]);
     const topAlbumData = () => {
         const {error} = lfmData;
         const album = lfmData?.topalbums?.album;
@@ -37,12 +36,10 @@ export const TopAlbumData = ({userName, apiKey}) => {
 
         }
 
-        if (error) {
-            return <p>{error}</p>;
-        }
+
 
         if (!album) {
-            return <p>Loading</p>;
+            return <p>Loading top albums data</p>;
         }
 
 

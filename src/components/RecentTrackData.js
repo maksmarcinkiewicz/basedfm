@@ -21,7 +21,7 @@ export const RecentTrackData = ({userName, apiKey}) => {
             .catch(() =>
                 updateLfmData({error: 'Whoops! Something went wrong with Last.fm'})
             );
-    }, []);
+    }, [recentTracks]);
     const topAlbumData = () => {
         const {error} = lfmData;
         const track = lfmData?.recenttracks?.track;
@@ -34,12 +34,10 @@ export const RecentTrackData = ({userName, apiKey}) => {
             albumImg: track?.[0]?.image?.[2]?.['#text']
         }
 
-        if (error) {
-            return <p>{error}</p>;
-        }
+
 
         if (!track) {
-            return <p>Loading</p>;
+            return <p>Loading tracks data</p>;
         }
 
 
@@ -47,6 +45,7 @@ export const RecentTrackData = ({userName, apiKey}) => {
             <div className="display flex flex-col p-4 bg-[#ddbea9]">
                 <div className='display flex items-center justify-between'>
                     <div>
+                        <h3 className='font-bold text-lg'>Recently played song</h3>
                         <h3 className='font-bold text-lg'>Song: {recentTrack.songName}</h3>
 
                         <h3 className='font-medium text-lg'>Artist: {recentTrack.artistName}</h3>
