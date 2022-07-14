@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react';
-import { motion } from "framer-motion"
+import {motion} from "framer-motion"
 
 export const UserData = ({userName, apiKey}) => {
 
@@ -23,11 +23,13 @@ export const UserData = ({userName, apiKey}) => {
                 updateLfmData({error: 'Whoops! Please provide a proper nickname'})
             );
     }, [userInfo]);
+
+
     const topAlbumData = () => {
         const {error} = lfmData;
         const user = lfmData?.user;
 
-        let options = {year: 'numeric', month: 'long', day: 'numeric' };
+        let options = {year: 'numeric', month: 'long', day: 'numeric'};
 
 
         const userInfo = {
@@ -36,10 +38,6 @@ export const UserData = ({userName, apiKey}) => {
             playCount: user?.playcount,
             registeredDate: new Date(user?.registered?.unixtime * 1000).toLocaleString('en-US', options)
         }
-
-
-
-
 
 
         if (error) {
@@ -59,13 +57,13 @@ export const UserData = ({userName, apiKey}) => {
                     <h3 className='font-poppins text-md font-regular'>From: {userInfo.registeredDate}</h3>
 
                 </div>
-                <motion.img whileHover={{ scale: 1.3}}
-                            whileTap={{ scale:0.8 }} className='rounded-full border-4 w-32' src={userInfo.userImg} alt=""/>
+                <motion.img whileHover={{scale: 1.3}}
+                            whileTap={{scale: 0.8}} className='rounded-full border-4 w-32' src={userInfo.userImg}
+                            alt=""/>
 
             </motion.div>
         )
     };
-
 
 
     return topAlbumData()

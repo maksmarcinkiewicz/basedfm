@@ -3,6 +3,7 @@ import {useEffect, useState} from 'react';
 export const TopAlbumData = ({userName, apiKey}) => {
 
     const topAlbums = `http://ws.audioscrobbler.com/2.0/?method=user.gettopalbums&user=${userName}&api_key=${apiKey}&limit=1&format=json`
+    const recentTracks = `https://ws.audioscrobbler.com/2.0/?method=user.getRecentTracks&user=${userName}&api_key=${apiKey}&limit=1&nowplaying=true&format=json`
 
     const [lfmData, updateLfmData] = useState({});
     useEffect(() => {
@@ -32,8 +33,8 @@ export const TopAlbumData = ({userName, apiKey}) => {
             albumArtist: album?.[0]?.artist?.name,
             albumImg: album?.[0]?.image?.[2]?.['#text'],
             albumPlayCount: album?.[0]?.playcount,
-            albumUrl: album?.[0]?.url
 
+            albumUrl: album?.[0]?.url
         }
 
 
