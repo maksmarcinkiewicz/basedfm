@@ -1,13 +1,30 @@
 # BASEDFM
 
-This is an application created for the needs of a bachelor thesis.
+An application created for the needs of a bachelor's thesis.
 
 ## Main feature
 
-displaying user statistics of tracks, albums and artists on Spotify app with the use of Last.fm API.
+Displaying user statistics of tracks, albums and artists on Spotify app with the use of Last.fm API.
+
+## How to run app
+
+[Online demo](https://poetic-kleicha-ca23a5.netlify.app/)
+
+or
 
 
--[Online demo](https://poetic-kleicha-ca23a5.netlify.app/)
+```
+cd /path/to/app
+
+```
+
+```
+npm install
+
+npm start
+
+```
+
 
 ### Built with
 
@@ -15,3 +32,5 @@ displaying user statistics of tracks, albums and artists on Spotify app with the
 - Semantic HTML5 markup
 - Tailwind CSS
 - Netlify
+
+
