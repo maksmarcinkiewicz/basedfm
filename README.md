@@ -15,14 +15,11 @@ or
 
 ```
 cd /path/to/app
-
 ```
 
 ```
 npm install
-
 npm start
-
 ```
 
 
