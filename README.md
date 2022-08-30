@@ -26,7 +26,6 @@ npm start
 ### Built with
 
 - [React](https://reactjs.org/) - JS library
-- Semantic HTML5 markup
 - Tailwind CSS
 - Netlify
 
